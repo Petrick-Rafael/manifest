@@ -7,15 +7,35 @@
     <title>galaxy's</title>
     <link rel="manifest" href="manifest.json">
     <script>
-        // if ('serviceWorker' in navigator) {
-        //     navigator.serviceWorker.register('sw.js').then(function(){
-        //         console.log('Service Worker registrado com sucesso!')
-        //     }).catch(function (){
-        //         console.log('Registro do service worker não realizado!')
-        //     })
-        // }
+       if ("serviceWorker" in navigator) {
+   if (navigator.serviceWorker.controller) {
+        console.log("[Aplicativo] funcionário de serviço ativo encontrado, não há necessidade de registrar");
+    } else {
+        navigator.serviceWorker
+            .register("./sw.js", {
+                scope: "./"
+            })
+            .then(function(reg) {
+                console.log("[Aplicativo] O trabalhador do serviço foi registrado para o escopo: " + reg.scope);
+            });
+    }
+}
     </script>
 </head>
+<link rel="manifest" href="manifest.json">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="blog">
+<meta name="apple-mobile-web-app-title" content="blog">
+<meta name="theme-color" content="#000000">
+<meta name="msapplication-navbutton-color" content="#000000">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="msapplication-starturl" content="https://petrick-rafael.github.io/manifest/">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" type="image/png" sizes="512x512" href="https://petrick-rafael.github.io/manifest/img/icon%20(6).png">
+<link rel="apple-touch-icon" type="image/png" sizes="512x512" href="https://petrick-rafael.github.io/manifest/img/icon%20(6).png">
 <body>
     
     <div class="jumbotron" style="
